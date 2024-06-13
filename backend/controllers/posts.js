@@ -1,22 +1,26 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const cloudinary=require("cloudinary")
 exports.createpost = async (req, res) => {
   try {
+    const myCloud=await cloudinary.v2.uploader.upload(req.body.image,{
+      folder:"posts"
+    })
     const newpostdata = {
       caption: req.body.caption,
       image: {
-        public_id: "req.body.public_id",
-        url: "req.body.url",
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
       },
       owner: req.user._id,
     };
     const newpost = await Post.create(newpostdata);
     const user = await User.findById(req.user.id);
-    user.posts.push(newpost._id);
+    user.posts.unshift(newpost._id);
     await user.save();
     res.status(201).json({
       success: true,
-      post: newpost,
+      message:"Post Created",
     });
   } catch (error) {
     res.status(500).json({
@@ -28,6 +32,7 @@ exports.createpost = async (req, res) => {
 exports.deletepost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+
     if (!post) {
       return res.status(404).json({
         success: true,
@@ -40,6 +45,7 @@ exports.deletepost = async (req, res) => {
         message: "Unauthorized",
       });
     }
+    await cloudinary.v2.uploader.destroy(post.image.public_id);
     await post.deleteOne();
     const user = await User.findById(req.user._id);
     const ind = user.posts.indexOf(req.params.id);
@@ -128,10 +134,10 @@ exports.getpostoffollowing = async (req, res) => {
       owner: {
         $in: user.following,
       },
-    });
+    }).populate("owner likes comments.user");
     res.status(200).json({
       success: true,
-      posts,
+      posts:posts.reverse(),
     });
   } catch (error) {
     res.status(500).json({
@@ -194,7 +200,7 @@ exports.deletecomment = async (req, res) => {
       });
     }
     if (post.owner.toString() === req.user._id.toString()) {
-      if(req.body.commentid==undefined){
+      if(req.body.commentid===undefined){
         return res.status(400).json({
           success:false,
           message:"commentid needed"
@@ -203,7 +209,7 @@ exports.deletecomment = async (req, res) => {
       let x=false;
       post.comments.forEach((item, index) => {
         
-        if (item.user.toString() === req.body.commentid.toString()) {
+        if (item._id.toString() === req.body.commentid.toString()) {
           x=true;
           return post.comments.splice(index, 1);
         }
@@ -221,6 +227,12 @@ exports.deletecomment = async (req, res) => {
       })
     }
     } else {
+      // if(req.body.commentid===undefined){
+      //   return res.status(400).json({
+      //     success:false,
+      //     message:"commentid needed"
+      //   })
+      // // }
       let x = false;
       post.comments.forEach((item, index) => {
         if (item.user.toString() === req.user._id.toString()) {
