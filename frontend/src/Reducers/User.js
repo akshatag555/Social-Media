@@ -29,7 +29,7 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase(loginSuccess, (state, action) => {
       state.loading = false;
       state.user = action.payload; 
-      console.log(state.user);
+      
       state.isAuth=true;
     })
     .addCase(loginFail, (state, action) => {
@@ -57,7 +57,7 @@ export const userReducer = createReducer(initialState, (builder) => {
       state.loading = false;
       
       state.user = action.payload;
-      console.log(action)
+      
       state.isAuth=true;
     })
     .addCase(loaduserFail, (state, action) => {
@@ -67,3 +67,17 @@ export const userReducer = createReducer(initialState, (builder) => {
     });
   // Add other cases for different actions if needed
 });
+const postOfFollowinginitialState={};
+export const postOfFollowingReducer=createReducer(postOfFollowinginitialState,(builder)=>{
+  builder.addCase(postOfFollowingReq, (state) => {
+    
+  })
+  .addCase(postOfFollowingSuccess, (state,action) => {
+    
+  })
+  .addCase(postOfFollowingFail, (state,action) => {
+    
+  })
+
+}
+  )
