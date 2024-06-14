@@ -4,7 +4,7 @@ export const likePost=(id)=>async(dispatch)=>{
         dispatch({
             type:"like/likeReq",
         })
-        const {data}=await axios.get(`https://social-media-five-tan-63.vercel.app/api/v1/post/${id}`);
+        const {data}=await axios.get(`https://social-media-akshatag555s-projects.vercel.app/api/v1/post/${id}`);
        
         dispatch({
             type:"like/likeSuccess",
@@ -23,7 +23,7 @@ export const addCommmentOnPost=(id,comment)=>async(dispatch)=>{
         dispatch({
             type:"like/addCommentReq",
         })
-        const {data}=await axios.put(`https://social-media-five-tan-63.vercel.app/api/v1/post/comment/${id}`,{
+        const {data}=await axios.put(`https://social-media-akshatag555s-projects.vercel.app/api/v1/post/comment/${id}`,{
             comment
         },{
             headers:{
@@ -50,7 +50,7 @@ export const deleteCommmentOnPost=(id,commentId)=>async(dispatch)=>{
         dispatch({
             type:"like/deleteCommentReq",
         })
-       const {data}=await axios.delete(`https://social-media-five-tan-63.vercel.app/api/v1/post/comment/${id}`,{
+       const {data}=await axios.delete(`https://social-media-akshatag555s-projects.vercel.app/api/v1/post/comment/${id}`,{
         data:{commentId},
        })
        
@@ -74,7 +74,7 @@ export const createNewPost=(caption,image)=>async(dispatch)=>{
             type:"like/newPostReq",
         })
         
-          const {data}=await axios.post(`https://social-media-five-tan-63.vercel.app/api/v1/post/upload`,{
+          const {data}=await axios.post(`https://social-media-akshatag555s-projects.vercel.app/api/v1/post/upload`,{
             caption,
             image,
         },{
@@ -104,7 +104,7 @@ export const updatePost=(caption,id)=>async(dispatch)=>{
             type:"like/updateCaptionReq",
         })
         
-          const {data}=await axios.put(`https://social-media-five-tan-63.vercel.app/api/v1/post/${id}`,{
+          const {data}=await axios.put(`https://social-media-akshatag555s-projects.vercel.app/api/v1/post/${id}`,{
             caption,
         },{
             headers:{
@@ -133,7 +133,7 @@ export const deletePost=(id)=>async(dispatch)=>{
             type:"like/deletePostReq",
         })
         
-          const {data}=await axios.delete(`https://social-media-five-tan-63.vercel.app/api/v1/post/${id}`);
+          const {data}=await axios.delete(`https://social-media-akshatag555s-projects.vercel.app/api/v1/post/${id}`);
        
         dispatch({
             type:"like/deletePostSuccesss",

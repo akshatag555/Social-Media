@@ -5,7 +5,7 @@ export const loginUser=(email,password)=>async (dispatch)=>{
         dispatch({
             type:"user/loginReq"
         })
-        const {data}=await axios.post("https://social-media-five-tan-63.vercel.app/api/v1/login",{email,password},{
+        const {data}=await axios.post("https://social-media-akshatag555s-projects.vercel.app/api/v1/login",{email,password},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -27,7 +27,7 @@ export const registerUser=(name,email,password,avatar)=>async (dispatch)=>{
         dispatch({
             type:"user/regReq"
         })
-        const {data}=await axios.post("https://social-media-five-tan-63.vercel.app/api/v1/register",{name,email,password,avatar},{
+        const {data}=await axios.post("https://social-media-akshatag555s-projects.vercel.app/api/v1/register",{name,email,password,avatar},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -50,7 +50,7 @@ export const updateProfile=(name,email,avatar)=>async (dispatch)=>{
         dispatch({
             type:"like/updateProfReq"
         })
-        const {data}=await axios.put("https://social-media-five-tan-63.vercel.app/api/v1/update/profile",{name,email,avatar},{
+        const {data}=await axios.put("https://social-media-akshatag555s-projects.vercel.app/api/v1/update/profile",{name,email,avatar},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -72,7 +72,7 @@ export const updatePass=(oldPass,newPass)=>async (dispatch)=>{
         dispatch({
             type:"like/updatePassReq"
         })
-        const {data}=await axios.put("https://social-media-five-tan-63.vercel.app/api/v1/update/password",{oldPass,newPass},{
+        const {data}=await axios.put("https://social-media-akshatag555s-projects.vercel.app/api/v1/update/password",{oldPass,newPass},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -94,7 +94,7 @@ export const forgotPass=(email)=>async (dispatch)=>{
         dispatch({
             type:"like/forgotPassReq"
         })
-        const {data}=await axios.post("https://social-media-five-tan-63.vercel.app/api/v1/forgot/password",{email},{
+        const {data}=await axios.post("https://social-media-akshatag555s-projects.vercel.app/api/v1/forgot/password",{email},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -116,7 +116,7 @@ export const resetPass=(token,password)=>async (dispatch)=>{
         dispatch({
             type:"like/resetPassReq"
         })
-        const {data}=await axios.put( `https://social-media-five-tan-63.vercel.app/api/v1/password/reset/${token}`,{password},{
+        const {data}=await axios.put( `https://social-media-akshatag555s-projects.vercel.app/api/v1/password/reset/${token}`,{password},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -138,7 +138,7 @@ export const deleteProfile=()=>async (dispatch)=>{
         dispatch({
             type:"like/deleteProfReq"
         })
-        const {data}=await axios.delete("https://social-media-five-tan-63.vercel.app/api/v1/delete/me",)
+        const {data}=await axios.delete("https://social-media-akshatag555s-projects.vercel.app/api/v1/delete/me",)
         dispatch({
             type:"like/deleteProfSuccess",
             payload:data.message
@@ -156,7 +156,7 @@ export const logoutUser=()=>async (dispatch)=>{
         dispatch({
             type:"user/logoutReq"
         })
-        await axios.get("https://social-media-five-tan-63.vercel.app/api/v1/logout")
+        await axios.get("https://social-media-akshatag555s-projects.vercel.app/api/v1/logout")
         dispatch({
             type:"user/logoutSuccess",
         
@@ -175,7 +175,7 @@ export const loadUser=()=>async (dispatch)=>{
             
             type:"user/loaduserReq"
         })
-        const { data } = await axios.get("https://social-media-five-tan-63.vercel.app/api/v1/me");
+        const { data } = await axios.get("https://social-media-akshatag555s-projects.vercel.app/api/v1/me");
 
         dispatch({
             type:"user/loaduserSuccess",
@@ -193,7 +193,7 @@ export const getFollowingPosts=()=>async(dispatch)=>{
         dispatch({
             type:"postOfFollowing/postOfFollowingReq",
         })
-        const {data}=await axios.get("https://social-media-five-tan-63.vercel.app/api/v1/posts");
+        const {data}=await axios.get("https://social-media-akshatag555s-projects.vercel.app/api/v1/posts");
         
         dispatch({
             type:"postOfFollowing/postOfFollowingSuccess",
@@ -212,7 +212,7 @@ export const getMyPosts=()=>async(dispatch)=>{
         dispatch({
             type:"myPosts/myPostsReq",
         })
-        const {data}=await axios.get("https://social-media-five-tan-63.vercel.app/api/v1/my/posts");
+        const {data}=await axios.get("https://social-media-akshatag555s-projects.vercel.app/api/v1/my/posts");
         
         dispatch({
             type:"myPosts/myPostsSuccess",
@@ -231,7 +231,7 @@ export const getUsersPosts=(id)=>async(dispatch)=>{
         dispatch({
             type:"userPosts/userPostsReq",
         })
-        const {data}=await axios.get(`https://social-media-five-tan-63.vercel.app/api/v1/user/posts/${id}`);
+        const {data}=await axios.get(`https://social-media-akshatag555s-projects.vercel.app/api/v1/user/posts/${id}`);
         
         dispatch({
             type:"userPosts/userPostsSuccess",
@@ -250,7 +250,7 @@ export const getUserProfile=(id)=>async(dispatch)=>{
         dispatch({
             type:"userProfile/userProfReq",
         })
-        const {data}=await axios.get(`https://social-media-five-tan-63.vercel.app/api/v1/user/${id}`);
+        const {data}=await axios.get(`https://social-media-akshatag555s-projects.vercel.app/api/v1/user/${id}`);
         
         dispatch({
             type:"userProfile/userProfSuccess",
@@ -269,7 +269,7 @@ export const getAllUsers=(name="")=>async(dispatch)=>{
         dispatch({
             type:"allUsers/allUsersReq",
         })
-        const {data}=await axios.get(`https://social-media-five-tan-63.vercel.app/api/v1/users?name=${name}`);
+        const {data}=await axios.get(`https://social-media-akshatag555s-projects.vercel.app/api/v1/users?name=${name}`);
        
         dispatch({
             type:"allUsers/allUsersSuccess",
@@ -289,7 +289,7 @@ export const followUnfollowUser=(id)=>async(dispatch)=>{
         dispatch({
             type:"like/followUserReq",
         })
-        const {data}=await axios.get(`https://social-media-five-tan-63.vercel.app/api/v1/follow/${id}`);
+        const {data}=await axios.get(`https://social-media-akshatag555s-projects.vercel.app/api/v1/follow/${id}`);
         
         dispatch({
             type:"like/followUserSuccess",
