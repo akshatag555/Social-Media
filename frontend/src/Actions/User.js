@@ -30,7 +30,8 @@ export const registerUser=(name,email,password,avatar)=>async (dispatch)=>{
         const {data}=await axios.post("https://social-media-akshatag555s-projects.vercel.app/api/v1/register",{name,email,password,avatar},{
             headers:{
                 "Content-Type":"application/json"
-            }
+            },
+            withCredentials: true
         })
         dispatch({
             type:"user/regSuccess",
