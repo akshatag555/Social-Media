@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({limit:'50mb',extended:true}));
 app.use(cookieParser());
 app.use(cors({
-    origin:["*"]
+    origin:"*"
 }));
 //importing route
  const post=require("./routes/posts");
