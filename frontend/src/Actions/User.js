@@ -8,7 +8,8 @@ export const loginUser=(email,password)=>async (dispatch)=>{
         const {data}=await axios.post("https://social-media-akshatag555s-projects.vercel.app/api/v1/login",{email,password},{
             headers:{
                 "Content-Type":"application/json"
-            }
+            },
+            withCredentials: true
         })
         dispatch({
             type:"user/loginSuccess",
